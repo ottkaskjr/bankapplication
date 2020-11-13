@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet  author="ott_kask"  id="log-1.0">
+        <createTable  tableName="bankclient">
+            <column  name="id"  type="bigint" autoIncrement="true">
+                <constraints  nullable="true"  primaryKey="true"  unique="true"/>
+            </column>
+            <column name="firstname" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastname" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="registered" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="bankaccount">
+            <column  name="id"  type="bigint" autoIncrement="true">
+                <constraints  nullable="true"  primaryKey="true"  unique="true"/>
+            </column>
+            <column name="accountnr" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bankclient_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_bankclient_id" references="bankclient(id)" />
+            </column>
+            <column name="registered" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="balance" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <createTable tableName="history">
+            <column  name="id"  type="bigint" autoIncrement="true">
+                <constraints  nullable="true"  primaryKey="true"  unique="true"/>
+            </column>
+            <column name="date" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bankaccount_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="bankaccount_id" references="bankaccount(id)" />
+            </column>
+            <column name="transaction" type="text">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="milvi_log-1.0" author="milvi">
+        <addColumn tableName="bankclient">
+            <column name="age" type="integer">
+                <constraints nullable="true"></constraints>
+            </column>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>
