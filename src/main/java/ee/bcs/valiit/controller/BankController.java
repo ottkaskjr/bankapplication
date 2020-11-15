@@ -119,6 +119,15 @@ public class BankController {
         //return notFound;
     }
 
+    // TEST ROUTE FOR GETTING ACCOUNT BALANCE
+    @GetMapping("accounts/{accountNr}/balance")
+    public String getAccountBalance(@PathVariable("accountNr") String accountNr){
+        if(accountNr == null){
+            throw new ApplicationException("Account not found or invalid or missing account number");
+        }
+        return accountService.getAccountBalanceService(accountNr);
+    }
+
 
     // ===============================================================//
     // ============================ POST =============================//

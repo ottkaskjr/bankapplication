@@ -97,6 +97,15 @@ public class AccountRepository {
         return result;
     }
 
+    // GET ACCOUNT BALANCE BY ACCOUNT NR
+    public BankAccount getAccountBalanceRepo(String accountNr){
+        String sql = "SELECT * FROM bankaccount WHERE accountnr = :accountnr";
+        Map paramMap = new HashMap();
+        paramMap.put("accountnr", accountNr);
+        BankAccount result = jdbcTemplate.queryForObject(sql, paramMap, new AccountRowMapper());
+        return result;
+    }
+
     // ===============================================================//
     // ============================ POST =============================//
     // ===============================================================//

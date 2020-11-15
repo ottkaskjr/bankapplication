@@ -79,7 +79,12 @@ public class AccountService {
     }
 
 
-
+    // GET ACCOUNT BALANCE
+    public String getAccountBalanceService(String accountNr){
+        BankAccount bankAccount = accountRepository.getAccountBalanceRepo(accountNr);
+        String balance = bankAccount.getBalance();
+        return balance;
+    }
 
 
 

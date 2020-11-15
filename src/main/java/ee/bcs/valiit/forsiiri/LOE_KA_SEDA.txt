@@ -1,0 +1,16 @@
+Lisa all olev changeSet ka sinna "db.changelog-1.0.xml"
+
+
+<changeSet id="randomgame" author="ott_kask">
+        <createTable tableName="randomgame">
+            <column  name="id"  type="bigint" autoIncrement="true">
+                <constraints  nullable="true"  primaryKey="true"  unique="true"/>
+            </column>
+            <column name="answer" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="attempts" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
