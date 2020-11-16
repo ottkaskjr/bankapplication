@@ -83,6 +83,40 @@ public class BankController {
     }*/
     /// =================== ////
 
+    // =============================
+    // =============================
+    //  TEST
+    @GetMapping("/testing")
+    public String createTest(@RequestParam("param") String param){
+        return "OK";
+    }
+    @GetMapping("/testingobject")
+    public ResponseJSON getObject(){
+        ResponseJSON response = new ResponseJSON("value");
+        return response;
+    }
+    @PostMapping("/testing/post")
+    public String postTest(@RequestBody RequestJSON body){
+        RequestJSON request = body;
+        if(request.money.equals("5000")){
+            return "OK";
+        }
+        return "NOT";
+    }
+    @PutMapping("/testing/put/{id}")
+    public String putTest(@PathVariable("id") String id){
+        //return "OK";
+
+        if(id.equals("123456")){
+            return "OK";
+        }
+        return "NOT";
+    }
+
+    // =============================
+    // =============================
+    // =============================
+
     // GET BANKCLIENTS
     @GetMapping("/clients")
     public Map<String, List<Client>> getClients() {
