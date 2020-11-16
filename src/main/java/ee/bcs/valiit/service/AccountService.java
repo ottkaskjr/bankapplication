@@ -21,9 +21,21 @@ import java.util.*;
 @Service
 public class AccountService {
 
+    /*
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
+    private NamedParameterJdbcTemplate jdbcTemplate;*/
+
+
+    // TEGELIKULT SÜNTAKSI POOLEST KORREKTNE VIIS VÕRRELDES ÜLEVAL OLEVA @Autowired ANNOTATSIOONIGA
+
+    public AccountService(AccountRepository accountRepository, NamedParameterJdbcTemplate jdbcTemplate) {
+        this.accountRepository = accountRepository;
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+    private AccountRepository accountRepository;
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     // ===============================================================//
