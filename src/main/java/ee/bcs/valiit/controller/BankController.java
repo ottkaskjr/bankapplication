@@ -83,6 +83,8 @@ public class BankController {
     }*/
     /// =================== ////
 
+
+
     // =============================
     // =============================
     //  TEST
@@ -118,8 +120,9 @@ public class BankController {
     // =============================
 
     // GET BANKCLIENTS
+    @CrossOrigin // et lubada teatud päringuid
     @GetMapping("/clients")
-    public Map<String, List<Client>> getClients() {
+    public List<Client> getClients() {
         return accountService.getClients();
     }
 
@@ -139,6 +142,15 @@ public class BankController {
             throw new ApplicationException("Please insert valid bankclient id");
         }
         return accountService.getClientById(clientID);
+    }
+
+    // GET ACCOUNTS BY CLIENTID
+    @GetMapping("/clients/{clientID}/accounts")
+    public List<BankAccount> getAccountsByClientID(@PathVariable("clientID") String clientID) throws Exception {
+        if(clientID == null) {
+            throw new ApplicationException("Please insert valid bankclient id");
+        }
+        return accountService.getAccountsByClientID(clientID);
     }
 
     // GET ACCOUNT BY NUMBER

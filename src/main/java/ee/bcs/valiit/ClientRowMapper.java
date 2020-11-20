@@ -14,6 +14,8 @@ public class ClientRowMapper implements RowMapper<Client> {
         bankclient.setFirstName(resultSet.getString("firstname"));
         bankclient.setLastName(resultSet.getString("lastname"));
         bankclient.setRegistered(resultSet.getString("registered"));
+        bankclient.setTotalBalance(resultSet.getString("totalbalance"));
+        bankclient.setNumberofaccounts(resultSet.getInt("numberofaccounts"));
         return bankclient;
     }
 }

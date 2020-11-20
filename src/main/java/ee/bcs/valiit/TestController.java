@@ -47,6 +47,25 @@ public class TestController {
     @RequestParam
     /employee?employeeId=5&testId=4
      */
+    @CrossOrigin
+    @GetMapping("register")
+    public String testVue(String email){
+        System.out.println(email);
+        return "OK";
+    }
+    @CrossOrigin
+    @PostMapping("vuepost")
+    public List<User> testVuePost(@RequestBody User user){
+        User newUser = new User(user.getName(), user.getEmail(), user.getAge());
+        System.out.println(newUser.toString());
+        List<User> userList = new ArrayList<>();
+        userList.add(user);
+        userList.add(new User("john", "smith", 35));
+        userList.add(new User("sam", "smith", 32));
+        userList.add(new User("ann", "smith", 26));
+        return userList;
+    }
+
     @GetMapping(value = "/")
     public String test(){
         return "Hello World";

@@ -1,0 +1,219 @@
+body {
+  background-color: #fff;
+  /*font-family: 'Concert One', cursive;*/
+  font-family: 'Dosis', sans-serif;
+  position: relative;
+}
+
+#main-nav {
+  height: 60px;
+  background: #6de38c;
+  position: relative;
+}
+
+#nav-brand {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  font-size: 30px;
+}
+
+.nav-link,
+.nav-link:visited {
+  text-decoration: none;
+  color: #fff;
+  font-size: 30px;
+  transition: 0.1s;
+}
+
+.nav-link:hover {
+  filter: brightness(125%);
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.nav-ham {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+}
+
+.ham-stripe {
+  width: 20px;
+  height: 4px;
+  margin-bottom: 2px;
+  background: #38353b;
+}
+
+#main-theme {
+  position: relative;
+}
+
+.main-theme {
+  position: relative;
+}
+
+#main-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 5;
+  /*transform: translateY(-50%);
+  transform: translateX(-50%);*/
+}
+
+#main-bg {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.brand {
+  color: #0f3a80;
+  font-weight: 700;
+  /*text-shadow: #3967b3;*/
+}
+
+.firstname-err,
+.lastname-err {
+  color: red;
+}
+.firstname-err p,
+.lastname-err p {
+  font-size: 12px !important;
+}
+
+.create-client-form {
+  max-width: 800px;
+
+  background-color: #6de38c;
+  padding: 16px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.53);
+  box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.53);
+
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30%;
+  width: initial;
+}
+
+footer {
+  color: #fff;
+  height: 80px;
+  background: #1d2d47;
+  width: 100%;
+}
+
+#notify-parent {
+  position: fixed;
+  width: 300px;
+  /*height: 70px;*/
+  left: 50%;
+  top: 5%;
+  z-index: 5;
+  transform: translateX(-50%);
+  /*background: #008000;*/
+}
+.notify-div {
+  position: relative;
+  width: 100%;
+  /*height: 70px;*/
+  margin: 0px 0px 10px 0px;
+  z-index: 6;
+}
+
+.notify-message {
+  /*transform: translateY(35%);*/
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.notify-close {
+  font-size: 18px;
+  display: block;
+  margin-top: 8px;
+  height: 100%;
+  width: 100%;
+  padding-top: 8px;
+  text-decoration: none;
+  color: #000;
+  transition: 0.1s;
+  /*padding-top: 100px;*/
+  /*padding: 0 !important;*/
+  /*margin: 50px 0 0 0;*/
+  /*margin-top: 100px !important;*/
+}
+.notify-close:hover {
+  color: rgb(141, 141, 141);
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.notify-close-div:hover {
+  /*filter: brightness(125%);*/
+}
+
+.bankaccount-container {
+  border: 3px solid #6de38c;
+}
+
+#accounts-modal-content {
+  min-height: 40vh;
+}
+
+.default-border {
+  border-radius: 5px;
+}
+.default-shadow {
+  -webkit-box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.53);
+  box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.53);
+}
+.default-shadow-border {
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.53);
+  box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.53);
+}
+.bg-main-theme {
+  background-color: #6de38c !important;
+}
+
+@media (max-width: 991px) {
+}
+
+/*
+@media (max-width: 768px) {
+  .carousel-item img {
+    min-height: 250px;
+    max-height: 250px;
+  }
+}
+*/
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 576px) {
+}
+
+@media (max-width: 430px) {
+}
+
+@media (min-width: 320px) {
+}
+@media (max-width: 320px) {
+  #notify-parent {
+    width: 100%;
+  }
+}
+
+@media (max-width: 280px) {
+}

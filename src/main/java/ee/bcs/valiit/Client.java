@@ -10,6 +10,8 @@ public class Client {
     private String registered;
     private BigDecimal id;
     private List<BankAccount> bankAccounts = new ArrayList<>();
+    private String totalBalance;
+    private int numberofaccounts;
     //public Map<String, BankAccount> accounts = new HashMap<>();
 
     public Client() {
@@ -60,6 +62,22 @@ public class Client {
 
     public void setBankAccounts(List<BankAccount> bankAccounts) {
         this.bankAccounts = bankAccounts;
+    }
+
+    public String getTotalBalance() {
+        return totalBalance;
+    }
+
+    public void setTotalBalance(String totalBalance) {
+        this.totalBalance = totalBalance;
+    }
+
+    public int getNumberofaccounts() {
+        return numberofaccounts;
+    }
+
+    public void setNumberofaccounts(int numberofaccounts) {
+        this.numberofaccounts = numberofaccounts;
     }
 
     public boolean isEmpty(){

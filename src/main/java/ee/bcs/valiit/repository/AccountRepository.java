@@ -113,11 +113,13 @@ public class AccountRepository {
     // CREATE BANK CLIENT
     public String createClient(String clientFirstName, String clientLastName){
 
-        String sql = "INSERT INTO bankclient (firstname, lastname, registered, age) VALUES (:firstname, :lastname, :registered, :age)";
+        String sql = "INSERT INTO bankclient (firstname, lastname, registered, age, totalbalance, numberofaccounts) VALUES (:firstname, :lastname, :registered, :age, :totalbalance, :numberofaccounts)";
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("firstname", clientFirstName);
         paramMap.put("lastname", clientLastName);
         paramMap.put("registered", getTime());
+        paramMap.put("totalbalance", '0');
+        paramMap.put("numberofaccounts", 0);
         //test
         paramMap.put("age", generateAge());
         //===
@@ -137,6 +139,8 @@ public class AccountRepository {
 
         // CHECK IF USER EXISTS
         Client client = getUserById(Long.toString(bankclient_id));
+        // UPDATE USER (INCREMENT 'numberofaccounts')
+        updateClientNumberOfAccounts(client.getId(), "++", client.getNumberofaccounts());
 
         // CREATE BANK ACCOUNT
         String createAccount = "INSERT INTO bankaccount (id, accountnr, bankclient_id, registered, balance) VALUES (:id, :accountnr, :bankclient_id, :registered, :balance)";
@@ -168,6 +172,15 @@ public class AccountRepository {
     // ===============================================================//
     // ============================ PUT =============================//
     // ===============================================================//
+    // UPDATE CLIENT
+    public void updateClientNumberOfAccounts(BigDecimal clientID, String action , int numberOfAccounts){
+        int newNumberOfAccounts = action.equals("++") ? numberOfAccounts+1 : numberOfAccounts-1;
+        String updateClientSQL = "UPDATE bankclient SET numberofaccounts = :numberofaccounts WHERE id = :id";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("id", clientID);
+        paramMap.put("numberofaccounts", newNumberOfAccounts);
+        jdbcTemplate.update(updateClientSQL, paramMap);
+    }
     // UPDATE BANK ACCOUNT
     public String updateAccount(String accountNr, String fieldName, String fieldVal){
         String updateBankAccount = "UPDATE bankaccount SET " + fieldName + " = :" + fieldName + " WHERE accountnr = :accountnr";
@@ -193,6 +206,10 @@ public class AccountRepository {
     public int deleteAccount(String accountNr){
         // FIRST GET AND CHECK IF ACCOUNT EXISTS
         BankAccount bankAccount = getAccountByAccountNr(accountNr);
+        // CHECK IF USER EXISTS
+        Client client = getUserById(bankAccount.getBankClientId().toString());
+        // UPDATE USER (INCREMENT 'numberofaccounts')
+        updateClientNumberOfAccounts(client.getId(), "--", client.getNumberofaccounts());
 
         // DELETE ALL HISTORY RELATED TO THE GIVEN ACCOUNT
         deleteHistory(bankAccount.getId());

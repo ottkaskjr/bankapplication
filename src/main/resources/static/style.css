@@ -1,0 +1,16 @@
+.img-shadow {
+    -webkit-box-shadow: 1px 3px 5px 3px rgba(0,0,0,0.53);
+    box-shadow: 1px 3px 5px 3px rgba(0,0,0,0.53);
+    border-radius: 2px;
+    cursor: pointer;
+    max-height: 204px;
+    width: 100%;
+}
+.media-hover:hover {
+    filter: brightness(125%);
+
+}
+
+.img-slider {
+    width: 80%;
+}

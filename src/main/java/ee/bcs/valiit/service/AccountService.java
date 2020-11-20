@@ -43,11 +43,11 @@ public class AccountService {
     // ===============================================================//
 
     // GET ALL CLIENTS
-    public Map<String, List<Client>> getClients() {
+    public List<Client> getClients() {
         List<Client> result = accountRepository.getAllClients();
         Map<String, List<Client>> allClients = new HashMap<>();
         allClients.put(result.size() + " bank clients", result);
-        return allClients;
+        return new ArrayList(allClients.values());
     }
 
     // GET CLIENT BY ID
@@ -80,6 +80,16 @@ public class AccountService {
         }
 
         return new BankAccount(new BigDecimal("0"), "notFound", new BigDecimal("0"), "", "");
+    }
+
+    // GET ACCOUNTS BY CLIENTID
+    public List<BankAccount> getAccountsByClientID(String clientID){
+        List<BankAccount> bankAccounts = accountRepository.getAccountsByClientId(clientID);
+        for(BankAccount account: bankAccounts){
+            List<Record> history = accountRepository.getAccountHistory(account.getId());
+            account.setHistory(history);
+        }
+        return bankAccounts;
     }
 
     // GET ALL BANKACCOUNTS

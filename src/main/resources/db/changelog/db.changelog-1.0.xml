@@ -19,6 +19,12 @@
             <column name="registered" type="text">
                 <constraints nullable="false"/>
             </column>
+            <column name="numberofaccounts" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="totalbalance" type="text">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
         <createTable tableName="bankaccount">
             <column  name="id"  type="bigint" autoIncrement="true">
@@ -51,6 +57,7 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
     </changeSet>
     <changeSet id="milvi_log-1.0" author="milvi">
         <addColumn tableName="bankclient">
